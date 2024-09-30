@@ -13,6 +13,7 @@ function unAuthorizedResponse() {
 
 export function getCall(url, params = null) {
   const token = Cookies.get("token");
+  console.log("Token")
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.get(url, {
