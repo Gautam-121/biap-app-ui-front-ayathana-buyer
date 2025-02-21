@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { deleteAllCookies } from "../utils/cookies";
 
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+// axios.defaults.baseURL = "http://localhost:3000" || process.env.REACT_APP_BASE_URL;
 
 function unAuthorizedResponse() {
   deleteAllCookies();
@@ -11,9 +11,12 @@ function unAuthorizedResponse() {
   window.location.pathname = "/";
 }
 
+
 export function getCall(url, params = null) {
   const token = Cookies.get("token");
   console.log("Token")
+  url = url.startsWith("/") ? url : `/${url}`
+  url = url.startsWith('/issueApis') ? `http://localhost:8989${url}` : `http://localhost:3000${url}`
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.get(url, {
@@ -31,6 +34,8 @@ export function getCall(url, params = null) {
 
 export function postCall(url, params) {
   const token = Cookies.get("token");
+  url = url.startsWith("/") ? url : `/${url}`
+  url = url.startsWith('/issueApis') ? `http://localhost:8989${url}` : `http://localhost:3000${url}`
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.post(url, params, {
@@ -47,6 +52,8 @@ export function postCall(url, params) {
 
 export function putCall(url, params) {
   const token = Cookies.get("token");
+  url = url.startsWith("/") ? url : `/${url}`
+  url = url.startsWith('/issueApis') ? `http://localhost:8989${url}` : `http://localhost:3000${url}`
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.put(url, params, {
@@ -63,6 +70,8 @@ export function putCall(url, params) {
 
 export function deleteCall(url) {
   const token = Cookies.get("token");
+  url = url.startsWith("/") ? url : `/${url}`
+  url = url.startsWith('/issueApis') ? `http://localhost:8989${url}` : `http://localhost:3000${url}`
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.delete(url, {

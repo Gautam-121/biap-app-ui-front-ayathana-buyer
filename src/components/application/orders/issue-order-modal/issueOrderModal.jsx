@@ -174,7 +174,7 @@ export default function IssueOrderModal({
       },
     };
     let es = new window.EventSourcePolyfill(
-      `${process.env.REACT_APP_BASE_URL}issueApis/events?messageId=${message_id}`,
+      `${"http://localhost:8989/" || process.env.REACT_APP_BASE_URL}issueApis/events?messageId=${message_id}`,
       header
     );
 

@@ -141,7 +141,7 @@ const StepCartContent = (props) => {
     };
     message_id.forEach((id) => {
       let es = new window.EventSourcePolyfill(
-        `${process.env.REACT_APP_BASE_URL}clientApis/events/v2?messageId=${id}`,
+        `${"http://localhost:3000/" || process.env.REACT_APP_BASE_URL}clientApis/events/v2?messageId=${id}`,
         header
       );
 

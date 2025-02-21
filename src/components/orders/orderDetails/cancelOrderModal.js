@@ -100,7 +100,7 @@ export default function CancelOrderModal(props) {
       },
     };
     let es = new window.EventSourcePolyfill(
-      `${process.env.REACT_APP_BASE_URL}clientApis/events?messageId=${message_id}`,
+      `${"http://localhost:3000/" || process.env.REACT_APP_BASE_URL}clientApis/events?messageId=${message_id}`,
       header
     );
     es.addEventListener("on_cancel", (e) => {
@@ -188,7 +188,7 @@ export default function CancelOrderModal(props) {
       },
     };
     let es = new window.EventSourcePolyfill(
-      `${process.env.REACT_APP_BASE_URL}clientApis/events?messageId=${message_id}`,
+      `${"http://localhost:3000/" || process.env.REACT_APP_BASE_URL}clientApis/events?messageId=${message_id}`,
       header
     );
     es.addEventListener("on_update", (e) => {

@@ -130,7 +130,7 @@ export default function TicketCard(props) {
             },
         };
         let es = new window.EventSourcePolyfill(
-            `${process.env.REACT_APP_BASE_URL}issueApis/events?messageId=${message_id}`,
+            `${"http://localhost:8989/" || process.env.REACT_APP_BASE_URL}issueApis/events?messageId=${message_id}`,
             header
         );
         es.addEventListener("on_issue_status", (e) => {

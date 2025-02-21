@@ -194,12 +194,12 @@ const StepAddressContent = ({
     };
     message_id.forEach((id) => {
       let es = new window.EventSourcePolyfill(
-        `${process.env.REACT_APP_BASE_URL}clientApis/events/v2?messageId=${id}`,
+        `${"http://localhost:3000/" || process.env.REACT_APP_BASE_URL}clientApis/events/v2?messageId=${id}`,
         header
       );
       es.addEventListener("on_select", (e) => {
         const { messageId } = JSON.parse(e.data);
-
+        console.log("data from message" , messageId)
         onGetQuote(messageId);
       });
       const timer = setTimeout(() => {
